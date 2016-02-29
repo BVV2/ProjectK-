@@ -39,8 +39,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="ClientParser.cs" />
+    <Compile Include="CloseOpenHandler.cs" />
+    <Compile Include="DocumentHandler.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="GapCalculations.cs" />
+    <Compile Include="MainData.cs" />
+    <Compile Include="MapManagement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rent.cs" />
+    <Compile Include="RentTable.cs" />
+    <Compile Include="Services.cs" />
+    <Compile Include="SQLHandler.cs" />
+    <Compile Include="StatisticalAnalysys.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
