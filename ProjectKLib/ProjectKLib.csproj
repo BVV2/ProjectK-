@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
-    <Compile Include="ClientParser.cs" />
+    <Compile Include="Parser.cs" />
     <Compile Include="CloseOpenHandler.cs" />
     <Compile Include="DocumentHandler.cs" />
     <Compile Include="Event.cs" />

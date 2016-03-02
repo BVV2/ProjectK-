@@ -9,5 +9,16 @@ namespace ProjectKLib
     {
         public Dictionary ClosingTables;
         public Dictionary OpenTables;
+
+        public SQLHandler SQLHandler
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
     }
 }

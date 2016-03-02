@@ -12,5 +12,7 @@ namespace ProjectKLib
         private DateTime StartDate;
         private DateTime PosEndDate;
         private DateTime RealEndDate;
+
+       
     }
 }

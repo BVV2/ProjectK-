@@ -7,6 +7,18 @@ namespace ProjectKLib
 {
     public class SQLHandler
     {
+
+        public Event Event
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+    
         public void NewClient()
         {
             throw new System.NotImplementedException();

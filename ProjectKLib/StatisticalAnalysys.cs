@@ -7,5 +7,15 @@ namespace ProjectKLib
 {
     public class StatisticalAnalysys
     {
+        public MainData MainData
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
     }
 }
