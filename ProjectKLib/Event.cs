@@ -11,5 +11,16 @@ namespace ProjectKLib
         private Services Service;
         private int Amount;
         private DateTime Date;
+
+        public Services Services
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
     }
 }

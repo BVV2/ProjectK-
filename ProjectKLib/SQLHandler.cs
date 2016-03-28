@@ -18,6 +18,17 @@ namespace ProjectKLib
             {
             }
         }
+
+        public Client Client
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
     
         public void NewClient()
         {

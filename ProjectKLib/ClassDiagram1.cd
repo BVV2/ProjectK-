@@ -1,38 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="ProjectKLib.MapManagement" Collapsed="true">
-    <Position X="15.5" Y="0.5" Width="1.5" />
+  <Class Name="ProjectKLib.MapManagement">
+    <Position X="10" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAABAAACCAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>MapManagement.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MainData" />
+      <Property Name="CloseOpenHandler" />
+      <Property Name="GapCalculations" />
+      <Property Name="SQLHandler" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ProjectKLib.SQLHandler">
-    <Position X="7" Y="3.75" Width="1.5" />
+    <Position X="7.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAIAAAAAQASAAAAAAgAAAAAAAAQAAABACAA=</HashCode>
+      <HashCode>AAAAIAAAAAIAAAAAQASAAAAAAgAAAAAAAAQAAABACAQ=</HashCode>
       <FileName>SQLHandler.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Event" />
+      <Property Name="Client" />
     </ShowAsAssociation>
   </Class>
   <Class Name="ProjectKLib.GapCalculations">
-    <Position X="10" Y="3.5" Width="1.5" />
+    <Position X="11" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAAAAAAAAAAAQAAAAABAAANAAAAAAAIABAAAJAAAAA=</HashCode>
       <FileName>GapCalculations.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectKLib.Parser">
-    <Position X="7" Y="10" Width="1.5" />
+    <Position X="7" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAgACAAAAAAAAAAAQAAAAIAAAA=</HashCode>
       <FileName>Parser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ProjectKLib.DocumentHandler">
-    <Position X="13" Y="7.25" Width="1.5" />
+    <Position X="12.5" Y="9.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAACAAQAAAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>DocumentHandler.cs</FileName>
@@ -42,7 +49,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="ProjectKLib.StatisticalAnalysys">
-    <Position X="10" Y="9.5" Width="1.5" />
+    <Position X="11" Y="11.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>StatisticalAnalysys.cs</FileName>
@@ -52,7 +59,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="ProjectKLib.CloseOpenHandler">
-    <Position X="13" Y="4.25" Width="1.5" />
+    <Position X="12.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAACAAAAAE=</HashCode>
       <FileName>CloseOpenHandler.cs</FileName>
@@ -62,7 +69,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="ProjectKLib.MainData">
-    <Position X="10" Y="7.25" Width="1.5" />
+    <Position X="10" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>MainData.cs</FileName>
@@ -72,7 +79,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="ProjectKLib.RentTable">
-    <Position X="7" Y="7" Width="1.5" />
+    <Position X="7" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAggAAACAAIAAABAAACgAAAAACAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>RentTable.cs</FileName>
@@ -86,28 +93,31 @@
     </ShowAsAssociation>
   </Class>
   <Struct Name="ProjectKLib.Client">
-    <Position X="7" Y="1.5" Width="1.5" />
+    <Position X="7.25" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEgAACAAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>Client.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="ProjectKLib.Rent">
-    <Position X="4" Y="7" Width="1.5" />
+    <Position X="9" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAIAAAAAAAAAAAAAAAAEAAAAAAAAAEAEAAA=</HashCode>
       <FileName>Rent.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="ProjectKLib.Event">
-    <Position X="4" Y="3.5" Width="1.5" />
+    <Position X="9.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAQAEBAAAAAAAAAAA=</HashCode>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAACAAAAAQAEBAAAAAAAAAAA=</HashCode>
       <FileName>Event.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Services" />
+    </ShowAsAssociation>
   </Struct>
   <Enum Name="ProjectKLib.Services">
-    <Position X="4" Y="5.25" Width="1.5" />
+    <Position X="12.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAABAAAAAAAAAAAQAAAAAAAEAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>Services.cs</FileName>
