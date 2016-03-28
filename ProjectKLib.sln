@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.40418.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectKLib", "ProjectKLib\ProjectKLib.csproj", "{7CE4E39C-F661-4024-8E5F-8A9C99A4005F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testers", "Testers\Testers.csproj", "{F8430F0E-DCFD-463B-82C3-84F7ADEF6074}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugConsole", "DebugConsole\DebugConsole.csproj", "{9C2647B4-A75F-4C67-A203-5DA7DC1F916B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7CE4E39C-F661-4024-8E5F-8A9C99A4005F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CE4E39C-F661-4024-8E5F-8A9C99A4005F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CE4E39C-F661-4024-8E5F-8A9C99A4005F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8430F0E-DCFD-463B-82C3-84F7ADEF6074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8430F0E-DCFD-463B-82C3-84F7ADEF6074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8430F0E-DCFD-463B-82C3-84F7ADEF6074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8430F0E-DCFD-463B-82C3-84F7ADEF6074}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C2647B4-A75F-4C67-A203-5DA7DC1F916B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C2647B4-A75F-4C67-A203-5DA7DC1F916B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C2647B4-A75F-4C67-A203-5DA7DC1F916B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C2647B4-A75F-4C67-A203-5DA7DC1F916B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

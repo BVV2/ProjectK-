@@ -7,10 +7,9 @@ namespace ProjectKLib
 {
     public struct Client
     {
-        private string FirstName;
-        private string SecondName;
-        private string Phone;
-        private string Email;
-        private int Rent;
+        public string FirstName;
+        public string SecondName;
+        public string Phone;
+        public string Email;
     }
 }

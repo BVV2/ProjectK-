@@ -16,13 +16,9 @@
   <Class Name="ProjectKLib.SQLHandler">
     <Position X="7.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAIAAAAAQASAAAAAAgAAAAAAAAQAAABACAQ=</HashCode>
+      <HashCode>AAAAIAAAAAIAAAAAQASAAAAAAAAAAAAAAAQAAABACAA=</HashCode>
       <FileName>SQLHandler.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Event" />
-      <Property Name="Client" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="ProjectKLib.GapCalculations">
     <Position X="11" Y="3" Width="1.5" />
