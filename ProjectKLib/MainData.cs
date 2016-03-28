@@ -7,8 +7,8 @@ namespace ProjectKLib
 {
     public class MainData
     {
-        public Dictionary ClosingTables;
-        public Dictionary OpenTables;
+        public Dictionary<int,bool> ClosingTables;
+        public Dictionary<int, bool> OpenTables;
 
         public SQLHandler SQLHandler
         {
