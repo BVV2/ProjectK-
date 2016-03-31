@@ -8,9 +8,10 @@ namespace ProjectKLib
 {
     public class SQLHandler
     {
+        
         private string connStr = @"Data Source=LD-PC;Initial Catalog=VasiaShop;Integrated Security=True";
         public void TestConnection()
-        {                      
+        {           
             SqlConnection conn = new SqlConnection(connStr);
             try
             {
@@ -31,14 +32,18 @@ namespace ProjectKLib
             finally
             {
                 Console.WriteLine("Connected");
-                conn.Close();
+                if (conn != null)
+                {
+                    conn.Close();
+                }
                 conn.Dispose();
             }
  
         }
 
         public void NewClient(string FirstName, string SecondName, string Tel, string EMail)
-        {    
+        {
+            #region Connect
             SqlConnection conn = new SqlConnection(connStr);
             try
             {
@@ -56,6 +61,7 @@ namespace ProjectKLib
                     conn.Close();                   
                 }
             }
+            #endregion
             finally
             {
                 Console.WriteLine("Creating dataset");
@@ -98,8 +104,11 @@ namespace ProjectKLib
                 catch
                 {
                     Console.WriteLine("Error on writing");                   
-                }  
-                conn.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
                 conn.Dispose();
                 Console.WriteLine("Operation complete");           
              }
@@ -141,6 +150,7 @@ namespace ProjectKLib
 
         public void NewRent(int IDClient, int Table, DateTime StartDate, DateTime PlannedEndDate)
         {
+            #region Connect
             SqlConnection conn = new SqlConnection(connStr);
             try
             {
@@ -158,6 +168,7 @@ namespace ProjectKLib
                     conn.Close();
                 }
             }
+            #endregion
             finally
             {
                 Console.WriteLine("Creating dataset");
@@ -201,15 +212,86 @@ namespace ProjectKLib
                 {
                     Console.WriteLine("Error on writing");
                 }
-                conn.Close();
+                if (conn != null)
+                {
+                    conn.Close();
+                }
                 conn.Dispose();
                 Console.WriteLine("Operation complete");
             }
         }
 
         public int getClientID(string name)
-        {
-            return 0;
+        { Dictionary<string, int> ClientList = new Dictionary<string,int>();
+            #region Connect
+            SqlConnection conn = new SqlConnection(connStr);
+            try
+            {
+                //try to open
+                conn.Open();
+            }
+            catch (SqlException se)
+            {
+
+                if (se.Number == 4060)
+                {
+                    //Error message
+                    Console.WriteLine("No such DB");
+                    //close
+                    conn.Close();
+                }
+            }
+            #endregion
+            finally
+            {
+                //Выводим значение на экран
+                SqlCommand cmd = new SqlCommand("[dbo].[GetPossibleClients]", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter param = new SqlParameter();
+                param.ParameterName = "@Name";
+                param.Value = name;
+                param.SqlDbType = System.Data.SqlDbType.VarChar;
+                cmd.CreateParameter();
+                cmd.Parameters.Add(param);
+
+
+                //Метод ExecuteReader() класса SqlCommand возврашает объект типа SqlDataReader, с помошью которого мы можемпрочитать все строки, возврашенные в результате выполнения запроса CommandBehavior.CloseConnection - закрываем соединение после запроса
+
+                SqlDataReader dr = cmd.ExecuteReader();   
+                    while (dr.Read())
+                    {
+                        //Console.WriteLine(dr[0]);
+                       int ID;
+                       string Tmp = dr[0].ToString();
+                       int.TryParse(Tmp, out ID);
+                       string Namer = dr[1] + " " + dr[2];
+                       ClientList.Add(Namer, ID);
+                    }
+                 if (conn != null)
+                {
+                    conn.Close();
+                }
+                conn.Dispose();
+            }
+            //Console.WriteLine(ClientList.ElementAt(0));
+            if (ClientList.Count == 1)
+            {
+                return ClientList.ElementAt(0).Value;
+            }
+            else
+            {
+                Console.WriteLine("Select correct person and write correct number");
+                for (int i = 0; i < ClientList.Count; i++)
+                {
+                    Console.WriteLine(i +". Name: " + ClientList.ElementAt(i).Key);
+
+                }
+                //this code will be changed on according GUI
+
+                int p;
+                int.TryParse(Console.ReadLine(), out p);
+                return ClientList.ElementAt(p).Value;
+            }
         }
 
         public void GetRent()

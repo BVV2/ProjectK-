@@ -10,7 +10,8 @@ namespace DebugConsole
     {
         static void Main(string[] args)
         {
-            
+
+            /*
             string FName;
             string SName;
             string Tel;
@@ -22,8 +23,16 @@ namespace DebugConsole
             Mail = Console.ReadLine();
             ProjectKLib.SQLHandler SQL = new SQLHandler();
             SQL.NewClient(FName, SName, Tel, Mail);
-
-
+            */
+            string Name;
+            Console.WriteLine("Enter client Name");
+            Name = Console.ReadLine();
+            
+            ProjectKLib.SQLHandler SQL = new SQLHandler();
+            int  ID = SQL.getClientID(Name);
+            Console.WriteLine("Client ID is " + ID.ToString());
+            Console.ReadLine();
+             
         }
     }
 }
