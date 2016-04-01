@@ -8,7 +8,7 @@ namespace ProjectKLib
 {
     public class SQLHandler
     {
-        
+        SmallOperationsAndFunctions functions = new SmallOperationsAndFunctions();
         private string connStr = @"Data Source=LD-PC;Initial Catalog=VasiaShop;Integrated Security=True";
         public void TestConnection()
         {           
@@ -244,6 +244,7 @@ namespace ProjectKLib
             #endregion
             finally
             {
+                name = functions.NameSplitter(name);
                 //Выводим значение на экран
                 SqlCommand cmd = new SqlCommand("[dbo].[GetPossibleClients]", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
