@@ -7,11 +7,12 @@ namespace ProjectKLib
 {
     public struct Rent
     {
-        private int ClientID;
-        private int TableID;
-        private DateTime StartDate;
-        private DateTime PosEndDate;
-        private DateTime RealEndDate;
+        public int ID;
+        public int ClientID;
+        public int TableID;
+        public DateTime StartDate;
+        public DateTime PosEndDate;
+        public DateTime RealEndDate;
 
        
     }

@@ -7,20 +7,11 @@ namespace ProjectKLib
 {
     public struct Event
     {
-        private int RentID;
-        private Services Service;
-        private int Amount;
-        private DateTime Date;
-
-        public Services Services
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public int ID;
+        public int RentID;
+        public int Service;
+        public int Amount;
+        public DateTime Date;
+       
     }
 }

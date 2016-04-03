@@ -10,7 +10,7 @@ namespace ProjectKLib
     {
         SmallOperationsAndFunctions functions = new SmallOperationsAndFunctions();
         private string connStr = @"Data Source=LD-PC;Initial Catalog=VasiaShop;Integrated Security=True";
-        public void TestConnection()
+        public SqlConnection Connect()
         {           
             SqlConnection conn = new SqlConnection(connStr);
             try
@@ -32,13 +32,9 @@ namespace ProjectKLib
             finally
             {
                 Console.WriteLine("Connected");
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-                conn.Dispose();
+                
             }
- 
+            return conn;
         }
 
         public void NewClient(string FirstName, string SecondName, string Tel, string EMail)
@@ -119,8 +115,30 @@ namespace ProjectKLib
             throw new System.NotImplementedException();
         }
 
-        public void GetClient()
+        public Client GetClient(int ClientNum)
         {
+                Client Client = new Client();
+                SqlConnection conn = Connect();           
+                SqlCommand cmd = new SqlCommand("Select * From Clients where [ID Client] = @ID", conn);
+                SqlParameter param = new SqlParameter();
+                param.ParameterName = "@ID";
+                param.Value = ClientNum;
+                param.SqlDbType = System.Data.SqlDbType.Int;
+                cmd.Parameters.Add(param);
+                SqlDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                Client.ID = int.Parse(dr[0].ToString());
+                Client.FirstName = dr[1].ToString();
+                Client.SecondName = dr[2].ToString();
+                Client.Phone = dr[3].ToString();
+                Client.Email = dr[4].ToString();
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                conn.Dispose();
+
+            
             /*
                 //Выводим значение на экран
                 cmd = new SqlCommand("Select * From Students", conn);
@@ -145,32 +163,13 @@ namespace ProjectKLib
                     }
                 }
                */
-            
+            return Client;
         }
 
         public void NewRent(int IDClient, int Table, DateTime StartDate, DateTime PlannedEndDate)
         {
-            #region Connect
-            SqlConnection conn = new SqlConnection(connStr);
-            try
-            {
-                //try to open
-                conn.Open();
-            }
-            catch (SqlException se)
-            {
-
-                if (se.Number == 4060)
-                {
-                    //Error message
-                    Console.WriteLine("No such DB");
-                    //close
-                    conn.Close();
-                }
-            }
-            #endregion
-            finally
-            {
+               
+                SqlConnection conn = Connect(); 
                 Console.WriteLine("Creating dataset");
                 SqlCommand cmd = new SqlCommand("Insert into Rent" +
                 "([ID Client],[ID Table],[Starting date],[Possible End Date]) Values (@Client,@Table,@Start,@End)", conn);
@@ -218,32 +217,14 @@ namespace ProjectKLib
                 }
                 conn.Dispose();
                 Console.WriteLine("Operation complete");
-            }
+            
         }
 
         public int getClientID(string name)
-        { Dictionary<string, int> ClientList = new Dictionary<string,int>();
-            #region Connect
-            SqlConnection conn = new SqlConnection(connStr);
-            try
-            {
-                //try to open
-                conn.Open();
-            }
-            catch (SqlException se)
-            {
-
-                if (se.Number == 4060)
-                {
-                    //Error message
-                    Console.WriteLine("No such DB");
-                    //close
-                    conn.Close();
-                }
-            }
-            #endregion
-            finally
-            {
+        { 
+                Dictionary<string, int> ClientList = new Dictionary<string,int>();
+                
+                SqlConnection conn = Connect(); 
                 name = functions.NameSplitter(name);
                 //Выводим значение на экран
                 SqlCommand cmd = new SqlCommand("[dbo].[GetPossibleClients]", conn);
@@ -273,7 +254,7 @@ namespace ProjectKLib
                     conn.Close();
                 }
                 conn.Dispose();
-            }
+            
             //Console.WriteLine(ClientList.ElementAt(0));
             if (ClientList.Count == 1)
             {
@@ -295,9 +276,33 @@ namespace ProjectKLib
             }
         }
 
-        public void GetRent()
+        public Rent GetRent(int RentNum)
         {
-            throw new System.NotImplementedException();
+                Rent Rent = new Rent();
+                
+                SqlConnection conn = Connect(); 
+                SqlCommand cmd = new SqlCommand("Select * From Rent where [ID Rent] = @ID", conn);
+                SqlParameter param = new SqlParameter();
+                param.ParameterName = "@ID";
+                param.Value = RentNum;
+                param.SqlDbType = System.Data.SqlDbType.Int;
+                cmd.Parameters.Add(param);
+                SqlDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                Rent.ID = int.Parse(dr[0].ToString());
+                Rent.ClientID = int.Parse(dr[1].ToString());
+                Rent.TableID = int.Parse(dr[2].ToString()); 
+                Rent.StartDate = DateTime.Parse(dr[3].ToString());
+                Rent.PosEndDate = DateTime.Parse(dr[4].ToString());
+                Rent.RealEndDate = DateTime.Parse(dr[5].ToString());
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                conn.Dispose();
+
+            
+            return Rent;
         }
 
         public void ChangeRent()
@@ -305,14 +310,82 @@ namespace ProjectKLib
             throw new System.NotImplementedException();
         }
 
-        public void NewEvent(int IDRent, Services Service, int Amount)
+        public void NewEvent(int IDRent, string Service, int Amount)
         {
-            throw new System.NotImplementedException();
+            Services ServiceNum;
+            int ServID = 0;
+                
+                SqlConnection conn = Connect(); 
+                Console.WriteLine("Creating dataset");
+                SqlCommand cmd = new SqlCommand("Insert into Events" +
+                "([ID Rent],[ID Service],Amount,Date) Values (@Rent,@Service,@Amount,@Date)", conn);                
+                SqlParameter param = new SqlParameter();
+                param.ParameterName = "@Rent";
+                param.Value = IDRent;
+                param.SqlDbType = System.Data.SqlDbType.Int;
+                cmd.Parameters.Add(param);
+                param = new SqlParameter();
+                param.ParameterName = "@Service";
+                for (ServiceNum = Services.MemPage; ServiceNum <= Services.CleanTable; ServiceNum++ )
+                {
+                    if(ServiceNum.ToString() == Service)
+                    ServID = (int)ServiceNum;
+                }
+                param.Value = ServID;
+                param.SqlDbType = System.Data.SqlDbType.Int;
+                cmd.Parameters.Add(param);
+                param = new SqlParameter();
+                param.ParameterName = "@Amount";
+                param.Value = Amount;
+                param.SqlDbType = System.Data.SqlDbType.Int;
+                cmd.Parameters.Add(param);
+                param = new SqlParameter();
+                param.ParameterName = "@Date";
+                param.Value = System.DateTime.Now;
+                param.SqlDbType = System.Data.SqlDbType.DateTime;
+                cmd.Parameters.Add(param);
+                Console.WriteLine("Attempt to write into Events");
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    Console.WriteLine("Error on writing");
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                conn.Dispose();
+            
         }
 
-        public void GetEvent()
+        public Event GetEvent(int EvID)
         {
-            throw new System.NotImplementedException();
+          
+                SqlConnection conn = Connect(); 
+                Event Event = new Event();
+                SqlCommand cmd = new SqlCommand("Select * From Events where [ID Events] = @ID", conn);
+                SqlParameter param = new SqlParameter();
+                param.ParameterName = "@ID";
+                param.Value = EvID;
+                param.SqlDbType = System.Data.SqlDbType.Int;
+                cmd.Parameters.Add(param);
+                SqlDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                Event.ID = int.Parse(dr[0].ToString());
+                Event.RentID = int.Parse(dr[1].ToString());
+                Event.Service = int.Parse(dr[2].ToString());
+                Event.Amount = int.Parse(dr[3].ToString());
+                Event.Date = DateTime.Parse(dr[4].ToString());
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                conn.Dispose();
+
+                return Event; 
         }
     }
 }

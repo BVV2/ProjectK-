@@ -5,12 +5,12 @@ using System.Text;
 
 namespace ProjectKLib
 {
-    public enum Services
+    public enum Services 
     {
-        MemPage = 1,
-        PriceTags = 2,
-        Alarms = 3,
-        AddDay = 4,
-        CleanTable = 5,
+        MemPage,
+        PriceTags,
+        Alarms,
+        AddDay,
+        CleanTable,
     }
 }
